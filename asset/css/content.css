@@ -1,0 +1,82 @@
+/* Content */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+section.container {
+    width: 1200px;
+    height: 1247px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 27px;
+}
+
+section.container .heading_line {
+    margin: 20px 0;
+}
+
+section.container .heading_line::before {
+    position: absolute;
+    content: "";
+    background: rgba(0,0,0,.1);
+    height: 2px;
+    width: 76%;
+    margin-top: 23px;
+}
+
+section.container .heading_line > span {
+    position: relative;
+    z-index: 4;
+    background-color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding-right: 12px;
+}
+
+section.container .content-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 1.6px;
+}
+
+.content_item  {
+    width: 286px;
+    height: 278px;
+    padding: 6px 12px;
+    margin-bottom: 10px;
+}
+
+.content_item  .item_img,
+.content_item .outter-img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    transition: all .7s;
+}
+
+.content_item .outter-img {
+    overflow: hidden;
+    height: 212px;
+}
+
+.content_item  .item_img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.content_item .item_subline {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: capitalize;
+    border-radius: 0 0 5px 5px;
+    padding: 10px 9px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+.content_item .item_subline > i {
+    font-size: 12px;
+}
+
+
+
+
