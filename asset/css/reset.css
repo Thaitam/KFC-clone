@@ -14,10 +14,15 @@
 }
   /* Track */
 ::-webkit-scrollbar-track { 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background-color: #a1a5b2;
+
 }
 ::-webkit-scrollbar-thumb {
     background: #61677A; 
     border-radius: 10px;
+}
+
+.no-shadow {
+    box-shadow: none !important;
 }
 

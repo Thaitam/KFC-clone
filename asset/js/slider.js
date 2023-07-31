@@ -1,25 +1,3 @@
-// Slider
-// var sliderIndex = 0;
-
-// function showSlider() {
-//     var slides = document.getElementsByClassName("slider");
-//     for (var i = 0; i < slides.length; i++) {
-//         slides[i].style.display = "none";
-//     }
-//     sliderIndex++
-    
-//     if (sliderIndex > slides.length) {
-//         sliderIndex = 1;
-//     }
-
-//     slides[sliderIndex - 1].style.display = "block";
-//     setTimeout(showSlider,3000);
-
-//     if (sliderIndex === slides.length) {
-//         sliderIndex = 0;
-//     }
-// }
-// showSlider();
 $('.owl-carousel').owlCarousel({
     nav:true,
     items:1,
@@ -33,10 +11,12 @@ $('.owl-carousel').owlCarousel({
             items:1
         },
         600:{
-            items:3
+            items:1,
+            nav:false
         },
         1000:{
-            items:5
+            items:1,
+            loop:false
         }
     }
 })
