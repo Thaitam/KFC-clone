@@ -1,0 +1,79 @@
+.background-footer {
+    background: #202124;
+}
+
+#footer .section_card-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card_footer .card-header {
+    padding: 15px 25px 10px 0;
+    color: #fff;
+    font-size: 16px;
+}
+.card-body {
+    padding-right: 15px;
+    padding-bottom: 15px;
+    transition: all .7;
+}
+.card-body > li {
+    margin-bottom: 6px;
+}
+.card-body > li > a{
+    color: #ababab;
+    font-size: 14px;
+
+} 
+.card-body > li > a:hover {
+    color: #fff;
+}
+.card-download {
+    display: flex;
+}
+.card-download > img {
+    width: 136px;
+    height: 42px;
+}  
+
+.social-link {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.social-link .copyright {
+    width: 642px;
+    height: 35px;
+    color: #fff;
+    text-align: center;
+}
+.social_media {
+    display: flex;
+}
+.icon-social_media {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #5c5c5c;
+    margin-bottom: 15px;
+    transition: all .5s;
+    margin-left: 10px;
+}
+.icon-social_media > a {
+    font-size: 20px;
+    line-height: 40px;
+    padding: 0 10px;
+}
+.icon-social_media > a > i {
+    color: #fff;
+}
+.icon-social_media:hover {
+    box-shadow: 0px 0px 8px 3px #fff;
+
+}
+
+
