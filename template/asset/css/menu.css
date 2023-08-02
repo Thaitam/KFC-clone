@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+:root {
+    --font: 'Roboto', sans-serif; 
+    --fontSize: 18px;
+    --fontweight: 600;
+    --padding: 0 12px;
+}
+
+.container-list_product {
+    margin-top: 77px;
+}
+
+#hotdeal {
+    position: relative;
+    margin-top: 60px;
+}
+#new-product {
+    position: relative;
+    margin-top: 60px;
+}
+.heading > h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.heading {
+    padding: 0 12px;
+    margin-bottom: 15px;
+}
+
+.magin-top:nth-child(n+3) {
+    margin-top: 45px !important;
+}
+
+.container_product {
+    display: flex;
+    flex-wrap: wrap;
+}
+.container_product .product-card {
+    width: 279px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 0 8px 0 rgba(0,0,0,.2);
+}
+
+.product-card .outer-img {
+    width: 100%;
+}
+.outer-img > img {
+    width: 100%;
+}
+
+.product-card .product-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+.product-content .product-content_name,
+.product-content .product-content_price {
+    font-family: var(--font);
+    font-size: var(--fontSize);
+    font-weight: var(--fontweight);
+    padding: var(--padding);
+}
+.product-content .product-content_price {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+.product-dest {
+    padding: var(--padding);
+    opacity: .7;
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 60px;
+}  
+
+.btnsection {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.btnsection .btn-edit,
+.btnsection .btn-add{
+    border: none;
+    border: 1px solid;
+    color: #000;
+    background: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    cursor: pointer;
+}
+
+.btnsection .btn-edit {
+    padding: 14px 22px;
+    border-radius: 25px;
+}
+.btnsection .btn-add {
+    padding: 14px 36px;
+    border-radius: 25px;
+    background-color: #e4002b;
+    border: 1px solid #e4002b;
+    color: #fff;
+}
+
+

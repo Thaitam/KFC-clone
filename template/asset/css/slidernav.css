@@ -1,12 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
-.container-tab-nav {
-    
-}
+/* .container-tab-nav {
+    position: relative;
+    margin-top: 104px;
+    padding-top: 0 !important;
+    z-index: 8888;
+    background-color: #fff;
+} */
 
 .tab-nav-bar {
-
+    position: fixed;
+    top: 104px;
+    left: 0;
+    right: 0;
+    width: 1146px;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 9999;
+    background-color: #fff;
 }
-
 .tab-navigation {
     width: 100%;
     overflow-x: hidden;

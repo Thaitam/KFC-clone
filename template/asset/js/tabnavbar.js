@@ -39,9 +39,9 @@ tabBtns.forEach((tabBtn, i) => {
 tabBtns.forEach((tabBtn, i)=> {
     tabBtn.addEventListener("click", () => {
         if (i >= 5) {
-            tabMenu.scrollLeft += 150;
+            tabMenu.scrollLeft += 250;
         } else {
-            tabMenu.scrollLeft -= 150;
+            tabMenu.scrollLeft -= 250;
         }
     });
 });
