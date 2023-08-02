@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+.container-tab-nav {
+    
+}
+
+.tab-nav-bar {
+
+}
+
+.tab-navigation {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.tab-menu {
+    height: 35px;
+    border-bottom: 1px solid;
+    white-space: nowrap;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.tab-btn {
+    display: inline-block;
+    margin: 0 30px;
+    box-sizing: border-box;
+}
+
+.tab-btn > a {
+    position: relative;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: .6;
+}
+.tab-btn > a:hover {
+    opacity: 1;
+}
+
+.active{
+    opacity: 1 !important;
+}
+.active::after{
+    bottom: -5px;
+    content: "";
+    height: 5px;
+    left: 0%;
+    position: absolute;
+    background: #e4002b;
+    transition: width .3s ease 0s,left .3s ease 0s;
+    width: 100%;
+}
+
+.btn-prev, .btn-next {
+    color: #000;
+    position: absolute;
+    padding: 7px 0;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.btn-prev {
+    left: 0;
+    padding-right: 12px;;
+    background: rgb(255,255,255);
+    background: linear-gradient(to left,transparent, rgba(255,255,255,1) 9%, rgba(255,255,255,1) 75%);
+    display: none;
+}
+
+.btn-next {
+    right: 0;
+    padding-left: 12px;;
+    background: rgb(255,255,255);
+    background: linear-gradient(to right,transparent, rgba(255,255,255,1) 75%,rgba(255,255,255,1) 9%);
+
+}
