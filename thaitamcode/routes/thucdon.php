@@ -67,7 +67,7 @@
             ?>
                 <div class="product-card">
                     <div class="outer-img">
-                        <img src="../asset/image/hotdeal/<?= $row["image"] ?>" alt="" class="product-img">
+                        <img src="../asset/image/hotdeal/<?= $row["image"]?>" alt="" class="product-img">
                     </div>
                     <div class="product-content">
                         <p class="product-content_name">
@@ -115,20 +115,20 @@
             ?>
                 <div class="product-card">
                     <div class="outer-img">
-                        <img src="../asset/image/hotdeal/happy-meal.jpg" alt="" class="product-img">
+                        <img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img">
                     </div>
                     <div class="product-content">
                         <p class="product-content_name">
-                            Happy Meal
+                            <?= $row["name"] ?>
                         </p>
                         <div class="product-content_price">
                             <p class="price_deal">
-                                89.000<span>₫</span>
+                                <?= $row["price"] ?><span>₫</span>
                             </p>
                         </div>
                     </div>
                     <div class="product-dest">
-                        <p>3 miếng gà + 1 lon 7Up</p>
+                        <p><?= $row["description"] ?></p>
                     </div>
                     <div class="btnsection">
                         <button class="btn-add onlyone">
@@ -148,22 +148,30 @@
                 <h3>Combo 1 người</h3>
             </div>
             <div class="container_product">
+            <?php
+                require("ketnoiDatabase.php");
+                $sql = "SELECT * FROM `food` WHERE typeof LIKE '%for-one%'";
+                $query = mysqli_query($cn, $sql);
+            ?>
+            <?php
+                while ($row = mysqli_fetch_array($query)) {
+            ?>
                 <div class="product-card">
                     <div class="outer-img">
-                        <img src="../asset/image/hotdeal/happy-meal.jpg" alt="" class="product-img">
+                        <img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img">
                     </div>
                     <div class="product-content">
                         <p class="product-content_name">
-                            Happy Meal
+                            <?= $row["name"] ?>
                         </p>
                         <div class="product-content_price">
                             <p class="price_deal">
-                                89.000<span>₫</span>
+                                <?= $row["price"] ?><span>₫</span>
                             </p>
                         </div>
                     </div>
                     <div class="product-dest">
-                        <p>3 miếng gà + 1 lon 7Up</p>
+                        <p><?= $row["description"] ?></p>
                     </div>
                     <div class="btnsection">
                         <button class="btn-add onlyone">
@@ -171,6 +179,9 @@
                         </button>
                     </div>
                 </div>
+            <?php 
+                }
+            ?>
             </div>
         </section>
         <!-- my change -->
@@ -180,22 +191,30 @@
                 <h3>Combo nhóm</h3>
             </div>
             <div class="container_product">
+            <?php
+                require("ketnoiDatabase.php");
+                $sql = "SELECT * FROM `food` WHERE typeof LIKE '%sharing%'";
+                $query = mysqli_query($cn, $sql);
+            ?>
+            <?php
+                while ($row = mysqli_fetch_array($query)) {
+            ?>
                 <div class="product-card">
                     <div class="outer-img">
-                        <img src="../asset/image/hotdeal/happy-meal.jpg" alt="" class="product-img">
+                        <img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img">
                     </div>
                     <div class="product-content">
                         <p class="product-content_name">
-                            Happy Meal
+                            <?= $row["name"] ?>
                         </p>
                         <div class="product-content_price">
                             <p class="price_deal">
-                                89.000<span>₫</span>
+                                <?= $row["price"] ?><span>₫</span>
                             </p>
                         </div>
                     </div>
                     <div class="product-dest">
-                        <p>3 miếng gà + 1 lon 7Up</p>
+                        <p><?= $row["description"] ?></p>
                     </div>
                     <div class="btnsection">
                         <button class="btn-add onlyone">
@@ -203,6 +222,9 @@
                         </button>
                     </div>
                 </div>
+            <?php
+                }
+            ?>
             </div>
         </section>
         <!-- my change -->
@@ -212,22 +234,30 @@
                 <h3>Gà rán - Gà quay</h3>
             </div>
             <div class="container_product">
+            <?php
+                require("ketnoiDatabase.php");
+                $sql = "SELECT * FROM `food` WHERE typeof LIKE '%fried-rosted-chicken%'";
+                $query = mysqli_query($cn, $sql);
+            ?>
+            <?php
+                while ($row = mysqli_fetch_array($query)) {
+            ?>
                 <div class="product-card">
                     <div class="outer-img">
-                        <img src="../asset/image/hotdeal/happy-meal.jpg" alt="" class="product-img">
+                        <img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img">
                     </div>
                     <div class="product-content">
                         <p class="product-content_name">
-                            Happy Meal
+                            <?= $row["name"] ?>
                         </p>
                         <div class="product-content_price">
                             <p class="price_deal">
-                                89.000<span>₫</span>
+                                <?= $row["price"] ?><span>₫</span>
                             </p>
                         </div>
                     </div>
                     <div class="product-dest">
-                        <p>3 miếng gà + 1 lon 7Up</p>
+                        <p><?= $row["description"] ?></p>
                     </div>
                     <div class="btnsection">
                         <button class="btn-add onlyone">
@@ -235,6 +265,9 @@
                         </button>
                     </div>
                 </div>
+            <?php
+                }
+            ?>
             </div>
         </section>
         <!-- my change -->
@@ -244,22 +277,30 @@
                 <h3>Burger - cơm - mì ý</h3>
             </div>
             <div class="container_product">
+            <?php
+                require("ketnoiDatabase.php");
+                $sql = "SELECT * FROM `food` WHERE typeof LIKE '%burger---rice%'";
+                $query = mysqli_query($cn, $sql);
+            ?>
+            <?php
+                while ($row = mysqli_fetch_array($query)) {
+            ?>
                 <div class="product-card">
                     <div class="outer-img">
-                        <img src="../asset/image/hotdeal/happy-meal.jpg" alt="" class="product-img">
+                        <img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img">
                     </div>
                     <div class="product-content">
                         <p class="product-content_name">
-                            Happy Meal
+                            <?= $row["name"] ?>
                         </p>
                         <div class="product-content_price">
                             <p class="price_deal">
-                                89.000<span>₫</span>
+                                <?= $row["price"] ?><span>₫</span>
                             </p>
                         </div>
                     </div>
                     <div class="product-dest">
-                        <p>3 miếng gà + 1 lon 7Up</p>
+                        <p><?= $row["description"] ?></p>
                     </div>
                     <div class="btnsection">
                         <button class="btn-add onlyone">
@@ -267,6 +308,9 @@
                         </button>
                     </div>
                 </div>
+            <?php 
+                }
+            ?>
             </div>
         </section>
         <!-- my change -->
@@ -276,22 +320,30 @@
                 <h3>Thức ăn nhẹ</h3>
             </div>
             <div class="container_product">
+            <?php
+                require("ketnoiDatabase.php");
+                $sql = "SELECT * FROM `food` WHERE typeof LIKE '%snack%'";
+                $query = mysqli_query($cn, $sql);
+            ?>
+            <?php
+                while ($row = mysqli_fetch_array($query)) {
+            ?>
                 <div class="product-card">
                     <div class="outer-img">
-                        <img src="../asset/image/hotdeal/happy-meal.jpg" alt="" class="product-img">
+                        <img src="../asset/image/product/<?= $row["imageURL"]?>" alt="" class="product-img">
                     </div>
                     <div class="product-content">
                         <p class="product-content_name">
-                            Happy Meal
+                            <?= $row["name"] ?>
                         </p>
                         <div class="product-content_price">
                             <p class="price_deal">
-                                89.000<span>₫</span>
+                                <?= $row["price"] ?><span>₫</span>
                             </p>
                         </div>
                     </div>
                     <div class="product-dest">
-                        <p>3 miếng gà + 1 lon 7Up</p>
+                        <p><?= $row["description"] ?></p>
                     </div>
                     <div class="btnsection">
                         <button class="btn-add onlyone">
@@ -299,6 +351,9 @@
                         </button>
                     </div>
                 </div>
+            <?php 
+                }
+            ?>
             </div>
         </section>
         <!-- my change -->
@@ -308,22 +363,30 @@
                 <h3>Thức uống & tráng miệng</h3>
             </div>
             <div class="container_product">
+            <?php
+                require("ketnoiDatabase.php");
+                $sql = "SELECT * FROM `food` WHERE typeof LIKE '%dessert-&-drink%'";
+                $query = mysqli_query($cn, $sql);
+            ?>
+            <?php
+                while ($row = mysqli_fetch_array($query)) {
+            ?>
                 <div class="product-card">
                     <div class="outer-img">
-                        <img src="../asset/image/hotdeal/happy-meal.jpg" alt="" class="product-img">
+                        <img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img">
                     </div>
                     <div class="product-content">
                         <p class="product-content_name">
-                            Happy Meal
+                            <?= $row["name"] ?>
                         </p>
                         <div class="product-content_price">
                             <p class="price_deal">
-                                89.000<span>₫</span>
+                                <?= $row["price"] ?><span>₫</span>
                             </p>
                         </div>
                     </div>
                     <div class="product-dest">
-                        <p>3 miếng gà + 1 lon 7Up</p>
+                        <p><?= $row["description"] ?></p>
                     </div>
                     <div class="btnsection">
                         <button class="btn-add onlyone">
@@ -331,6 +394,9 @@
                         </button>
                     </div>
                 </div>
+            <?php 
+                }
+            ?>
             </div>
         </section>
         <!-- my change -->

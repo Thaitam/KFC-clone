@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="../asset/css/content.css">
         <link rel="stylesheet" href="../asset/css/menu.css">
         <link rel="stylesheet" href="../asset/css/footer.css">
+        <link rel="stylesheet" href="../asset/css/form.css">
         <link rel="stylesheet" href="../asset/icon/themify-icons-font/themify-icons/themify-icons.css">
     </head>
 <body>
@@ -19,14 +20,14 @@
             <div class="header-nav">
                 <a class="logo" href="http://localhost/project_final/thaitamcode/index.php"><img class="logo" src="../asset/image/logo/kfc-logo.svg" alt=""></a>
                 <ul>
-                    <li><a href="./routes/thucdon.php">Thực đơn</a></li>
+                    <li><a href="./thucdon.php">Thực đơn</a></li>
                     <li><a href="#">Khuyến mãi</a></li>
                 </ul>
             </div>
             <div class="header-right">
                 <ul>
                     <li><a href="#">English</a></li>
-                    <li><a href="./routes/Manament.php"><i class="icon icon-user ti-user"></i></a></li>
+                    <li><a href="#"><i class="icon icon-user ti-user"></i></a></li>
                     <li><a href="#"><i class="icon icon-cart ti-shopping-cart"></i></a></li>
                     <li><a href="#"><i class="icon icon-memu ti-menu"></i></a></li>
                 </ul>
@@ -34,6 +35,7 @@
         </header>
     </section>
     <!-- HEADER -->
+    <!-- FORM -->
     <section class="container form-container">
         <form class="form" action="" method="POST" enctype="multipart/form-data">
             <div class="box box1"></div>
@@ -43,8 +45,8 @@
                 Thêm ưu đãi
             </h1>
             <div class="form-product_name jc-spacebtw">
-                <label class="margin-bottom-10 font" for="ten">Tên sản phẩm</label>
-                <input class="margin-bottom-15 font pding-lr-5px" type="text" id="ten" name="ten" required>
+                <label class="margin-bottom-10 font" for="name">Tên sản phẩm</label>
+                <input class="margin-bottom-15 font pding-lr-5px" type="text" id="name" name="name" required>
             </div>
             <div class="form-product_pricedeal jc-spacebtw">
                 <label class="margin-bottom-10 font" for="price-deal">Giá giảm sản phẩm</label>
@@ -64,7 +66,7 @@
             </div>
             <div class="center">
                 <button class="btn-cancel ">
-                    <a href="./thucdon.html" class="font">Hủy</a>
+                    <a href="./thucdon.php" class="font">Hủy</a>
                 </button>
                 <button class="btn-add_product font" type="submit" name="submit">
                     Thêm sản phẩm
@@ -72,5 +74,27 @@
             </div>
         </form>
     </section>
+    <?php
+        require("ketnoiDatabase.php");
+        if (isset($_POST["submit"])) {
+            $tensp = $_POST["name"];
+            $giaspdeal = $_POST["price-deal"];
+            $giasp = $_POST["price-org"];
+            $mota = $_POST["product-desct"];
+            $hinhanh = $_FILES['product-img']['name'];
+            //Tạo thư mục , tạo thư mục images ở bên ngoài
+            $taget_dir = "../asset/image/hotdeal/";
+            //Tạo đường dẫn đến file
+            $target_file = $taget_dir.$hinhanh;
+            //Check đủ các thông tin
+            if(isset($tensp) && isset($giaspdeal) && isset($giasp) && isset($mota) && isset($hinhanh)) {
+                move_uploaded_file($_FILES["product-img"]["tmp_name"], $target_file);
+                $sql = "INSERT INTO `hotdeal` (`id`, `name_food`, `pricedeal`, `priceorg`, `description`, `image`)
+                VALUE(NULL, '$tensp', '$giaspdeal', '$giasp', '$mota', '$hinhanh')";
+                mysqli_query($cn, $sql);
+                echo "<script> alert('Bạn đã thêm thành công')</script>";
+            }
+        }
+    ?>
 </body>
 </html>
