@@ -44,6 +44,7 @@ tabBtns.forEach((tabBtn, i)=> {
             tabMenu.scrollLeft -= 250;
         }
     });
+    setTimeout(() => iconVisibility(), 50)
 });
 
 
