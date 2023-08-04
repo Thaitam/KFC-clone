@@ -31,7 +31,7 @@
                     <li><a href="#">English</a></li>
                     <li><a href="./routes/Manament.php"><i class="icon icon-user ti-user"></i></a></li>
                     <li><a href="#"><i class="icon icon-cart ti-shopping-cart"></i></a></li>
-                    <li><a href="#"><i class="icon icon-memu ti-menu"></i></a></li>
+                    <li><a href="./routes/Productmanement.php"><i class="icon icon-memu ti-menu"></i></a></li>
                 </ul>
             </div>
         </header>

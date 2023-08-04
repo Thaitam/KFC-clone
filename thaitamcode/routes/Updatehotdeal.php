@@ -1,3 +1,12 @@
+<?php
+    require("ketnoiDatabase.php");
+    $masp = (int) $_GET['id'];
+    $sql = "SELECT * FROM `hotdeal` WHERE `id` = '$masp'";
+    $query = mysqli_query($cn, $sql);
+    $row = mysqli_fetch_array($query);
+    $img = $row['image'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -29,7 +38,7 @@
                     <li><a href="#">English</a></li>
                     <li><a href="#"><i class="icon icon-user ti-user"></i></a></li>
                     <li><a href="#"><i class="icon icon-cart ti-shopping-cart"></i></a></li>
-                    <li><a href="./Productmanament.html"><i class="icon icon-memu ti-menu"></i></a></li>
+                    <li><a href="./Productmanement.php"><i class="icon icon-memu ti-menu"></i></a></li>
                 </ul>
             </div>
         </header>
@@ -42,39 +51,40 @@
             <div class="box box2"></div>
             <div class="box box3"></div>
             <h1 class="form-heading">
-                Thêm ưu đãi
+                Quản lý sản phẩm
             </h1>
             <div class="form-product_name jc-spacebtw">
                 <label class="margin-bottom-10 font" for="name">Tên sản phẩm</label>
-                <input class="margin-bottom-15 font pding-lr-5px" type="text" id="name" name="name" required>
+                <input class="margin-bottom-15 font pding-lr-5px" type="text" id="name" name="name"  value="<?= $row["name_food"]?>">
             </div>
             <div class="form-product_pricedeal jc-spacebtw">
                 <label class="margin-bottom-10 font" for="price-deal">Giá giảm sản phẩm</label>
-                <input class="margin-bottom-15 font pding-lr-5px" type="number" id="price-deal" name="price-deal" required>
+                <input class="margin-bottom-15 font pding-lr-5px" type="number" id="price-deal" name="price-deal" value="<?= $row["pricedeal"]?>">
             </div>
             <div class="form-product_priceorg jc-spacebtw">
                 <label class="margin-bottom-10 font" for="price-org">Giá góc sản phẩm</label>
-                <input class="margin-bottom-15 font pding-lr-5px" type="number" id="price-org" name="price-org" required>
+                <input class="margin-bottom-15 font pding-lr-5px" type="number" id="price-org" name="price-org" value="<?= $row["priceorg"] ?>">
             </div>
             <div class="form-product_img jc-spacebtw">
                 <label class="margin-bottom-10 font" for="product-img">Hình ảnh sản phẩm</label>
-                <input class="margin-bottom-15 font pding-lr-5px" type="file" id="product-img" name="product-img" value="Choose File" required>
+                <img src="../asset/image/hotdeal/<?= $row["image"]?>" alt="">
+                <input class="margin-bottom-15 font pding-lr-5px" type="file" id="product-img" name="product-img" value="Choose File">
             </div>
             <div class="form-product_desct jc-spacebtw">
                 <label class="margin-bottom-10 font" for="product-desct">Mô tả sản phẩm</label>
-                <textarea name="product-desct" font id="product-desct" cols="30" rows="10"></textarea>
+                <textarea name="product-desct" class="font" id="product-desct" cols="30" rows="10"><?=$row["description"]?></textarea>
             </div>
             <div class="center">
                 <button class="btn-cancel ">
                     <a href="./thucdon.php" class="font">Hủy</a>
                 </button>
                 <button class="btn-add_product font" type="submit" name="submit">
-                    Thêm sản phẩm
+                    Cập nhật sản phẩm
                 </button>
             </div>
         </form>
     </section>
-    <!-- <?php
+    <?php
         require("ketnoiDatabase.php");
         if (isset($_POST["submit"])) {
             $tensp = $_POST["name"];
@@ -84,17 +94,23 @@
             $hinhanh = $_FILES['product-img']['name'];
             //Tạo thư mục , tạo thư mục images ở bên ngoài
             $taget_dir = "../asset/image/hotdeal/";
-            //Tạo đường dẫn đến file
-            $target_file = $taget_dir.$hinhanh;
+            if($hinhanh) {
+                if (file_exists("../asset/image/hotdeal/".$img)) {
+                    unlink("../asset/image/hotdeal/".$img);
+                } 
+                $target_file = $taget_dir.$hinhanh;
+            } else {
+                $target_file = $taget_dir.$img;
+                $hinhanh = $img;
+            }
             //Check đủ các thông tin
             if(isset($tensp) && isset($giaspdeal) && isset($giasp) && isset($mota) && isset($hinhanh)) {
                 move_uploaded_file($_FILES["product-img"]["tmp_name"], $target_file);
-                $sql = "INSERT INTO `hotdeal` (`id`, `name_food`, `pricedeal`, `priceorg`, `description`, `image`)
-                VALUE(NULL, '$tensp', '$giaspdeal', '$giasp', '$mota', '$hinhanh')";
+                $sql = "UPDATE `hotdeal` SET `name_food`='$tensp', `pricedeal`='$giaspdeal', `priceorg`='$giasp', `description`='$mota', `image`='$hinhanh' WHERE `id`='$masp'";
                 mysqli_query($cn, $sql);
-                echo "<script> alert('Bạn đã thêm thành công')</script>";
+                echo "<script> alert('Bạn đã cập nhật thành công')</script>";
             }
         }
-    ?> -->
+    ?>
 </body>
 </html>
