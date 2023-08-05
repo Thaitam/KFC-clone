@@ -28,7 +28,7 @@
                 <ul>
                     <li><a href="#">English</a></li>
                     <li><a href="#"><i class="icon icon-user ti-user"></i></a></li>
-                    <li><a href="#"><i class="icon icon-cart ti-shopping-cart"></i></a></li>
+                    <li><a href="./Cart.php"><i class="icon icon-cart ti-shopping-cart"></i></a></li>
                     <li><a href="./Productmanement.php"><i class="icon icon-memu ti-menu"></i></a></li>
                 </ul>
             </div>
@@ -92,7 +92,10 @@
                 $sql = "INSERT INTO `hotdeal` (`id`, `name_food`, `pricedeal`, `priceorg`, `description`, `image`)
                 VALUE(NULL, '$tensp', '$giaspdeal', '$giasp', '$mota', '$hinhanh')";
                 mysqli_query($cn, $sql);
-                echo "<script> alert('Bạn đã thêm thành công')</script>";
+                echo "<script> alert('Bạn đã thêm thành công')
+                        window.location.href = 'thucdon.php';
+                </script>"
+                ;
             }
         }
     ?>

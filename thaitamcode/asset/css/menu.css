@@ -57,6 +57,24 @@
     width: 100%;
     transition: all .7s;
 }
+
+.outer-img a .product-img {
+    transition: all .7s;
+}
+
+.outer-img a .product-img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+img.product-img {
+    width: 100%;
+}
+img.product-img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 .outer-img > img:hover {
     transform: scale(1.1);
     cursor: pointer;
@@ -177,8 +195,11 @@ p.price_org {
     align-items: center;
     margin-right: 10px;
 }
+.btn-update {
+    margin-right: 10px;
+}
 
-.btn-update > a,.btn-delete {
+.btn-update > a,.btn-delete > a {
     padding: 8px 16px;
     margin: 5px;
     font-family: 'Oswald', sans-serif;

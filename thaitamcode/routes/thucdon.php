@@ -27,7 +27,7 @@
                 <ul>
                     <li><a href="#">English</a></li>
                     <li><a href="./Manament.php"><i class="icon icon-user ti-user"></i></a></li>
-                    <li><a href="#"><i class="icon icon-cart ti-shopping-cart"></i></a></li>
+                    <li><a href="./Cart.php"><i class="icon icon-cart ti-shopping-cart"></i></a></li>
                     <li><a href="./Productmanement.php"><i class="icon icon-memu ti-menu"></i></a></li>
                 </ul>
             </div>
@@ -67,7 +67,7 @@
             ?>
                 <div class="product-card">
                     <div class="outer-img">
-                        <img src="../asset/image/hotdeal/<?= $row["image"]?>" alt="" class="product-img">
+                        <a href="./DetailProduct.php?id=<?= $row['id']?>"><img src="../asset/image/hotdeal/<?= $row["image"]?>" alt="" class="product-img"></a>
                     </div>
                     <div class="product-content">
                         <p class="product-content_name">
@@ -115,7 +115,7 @@
             ?>
                 <div class="product-card">
                     <div class="outer-img">
-                        <img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img">
+                        <a href="./Detail.php?id=<?= $row['id']?>"><img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img"></a>
                     </div>
                     <div class="product-content">
                         <p class="product-content_name">
@@ -132,7 +132,7 @@
                     </div>
                     <div class="btnsection">
                         <button class="btn-add onlyone">
-                            Thêm
+                            <a href="./Addtocart.php?id=<?= $row['id']?>">Thêm</a>
                         </button>
                     </div>
                 </div>
@@ -158,7 +158,8 @@
             ?>
                 <div class="product-card">
                     <div class="outer-img">
-                        <img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img">
+                        <a href="./Detail.php?id=<?= $row['id']?>"><img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img"></a>
+
                     </div>
                     <div class="product-content">
                         <p class="product-content_name">
@@ -201,7 +202,8 @@
             ?>
                 <div class="product-card">
                     <div class="outer-img">
-                        <img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img">
+                        <a href="./Detail.php?id=<?= $row['id']?>"><img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img"></a>
+
                     </div>
                     <div class="product-content">
                         <p class="product-content_name">
@@ -244,7 +246,8 @@
             ?>
                 <div class="product-card">
                     <div class="outer-img">
-                        <img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img">
+                        <a href="./Detail.php?id=<?= $row['id']?>"><img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img"></a>
+
                     </div>
                     <div class="product-content">
                         <p class="product-content_name">
@@ -287,7 +290,8 @@
             ?>
                 <div class="product-card">
                     <div class="outer-img">
-                        <img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img">
+                        <a href="./Detail.php?id=<?= $row['id']?>"><img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img"></a>
+
                     </div>
                     <div class="product-content">
                         <p class="product-content_name">
@@ -330,7 +334,7 @@
             ?>
                 <div class="product-card">
                     <div class="outer-img">
-                        <img src="../asset/image/product/<?= $row["imageURL"]?>" alt="" class="product-img">
+                        <a href="./Detail.php?id=<?= $row['id']?>"><img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img"></a>
                     </div>
                     <div class="product-content">
                         <p class="product-content_name">
@@ -373,7 +377,7 @@
             ?>
                 <div class="product-card">
                     <div class="outer-img">
-                        <img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img">
+                        <a href="./Detail.php?id=<?= $row['id']?>"><img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="" class="product-img"></a>
                     </div>
                     <div class="product-content">
                         <p class="product-content_name">

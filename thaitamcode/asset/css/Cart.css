@@ -1,0 +1,395 @@
+body{
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+.title{
+    margin-top: 150px;
+    margin-left: 200px;
+    display: flex;
+    
+    font-size: 32px;
+    line-height: 10px;
+    font-family: Oswald,sans-serif;
+    font-weight: 600;
+}
+
+
+.Button_detail{
+    height: 200px;
+    width: 700px;
+    margin-left: 100px;
+    margin-top: 40px;
+    border-radius: 10px;
+    padding: 60px;
+    padding-top: 30px;
+    background-color: #fff;
+    box-shadow: -1px 2px 7px 0px #888888;
+    margin-left: 200px;
+    display: flex;
+
+}
+
+.Button_detail img{
+    height: 170px;
+    width: 200px;
+    margin-left: -40px;
+    margin-top: -15px;
+
+}
+
+.Button_detail .Infomation_Product{
+    margin-left: 20px;
+}
+
+
+.Button_detail .Name_product{
+    margin-top: 30px;
+    font-weight: 700;
+}
+
+.Button_detail .description{
+    margin-top: 10px;
+    color: #888888;
+    font-size: 14px;
+}
+
+.Button_detail .button{
+    display: flex;
+}
+
+.Button_detail .button .edit{
+    margin-top: 30px;
+    margin-right: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    border-bottom: 1px solid black;
+}
+
+.Button_detail .button .edit:hover{
+    border: 0;
+    cursor: pointer;
+}
+
+.Button_detail .button .remove{
+    margin-top: 30px;
+    margin-right: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    border-bottom: 1px solid black;
+}
+
+.Button_detail .button .remove:hover{
+    border: 0;
+    cursor: pointer;
+}
+
+
+.Button_detail .order {
+    display: flex;
+    margin-left: 130px;
+    margin-top: 70px;
+    font-weight: 700;
+    
+}
+.Button_detail .order input{
+    position: relative;
+    font-size: 16px;
+    top: -20px;
+    padding-left: 16px;
+    border: 0;
+    outline: none;
+    width: 40px;
+    font-weight: 700;
+}
+
+.Button_detail .order .price input{
+    position: relative;
+    width: 100px;
+    left: -30px;
+    top: 0px;
+}
+
+.Button_detail .order img{
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+}
+
+.Button_detail .order .minus{
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+
+}
+.Button_detail .order .minus:hover{
+    cursor: pointer;
+}
+
+.Button_detail .order .plus{
+    position: relative;
+    left: -15px;
+}
+
+.Button_detail .order .plus:hover{
+    cursor: pointer;
+
+}
+
+.Button_detail .order .price{
+    margin-left: 20px;
+    margin-top: -10px;
+}
+
+
+
+
+.list_product{
+    height: 270px;
+    width: 700px;
+    margin-left: 100px;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-top: 20px;
+    background-color: #2d2d2d;
+    margin-left: 200px;
+    overflow-y: hidden;
+    
+}
+
+.Description_payment .Price_product input{
+    font-size: 16px;
+    width: 80px;
+    border: none;
+    outline: none;
+}
+
+.list_product .main_sentence{
+    color: #fff;
+    font-size: 24px;
+    font-family: Oswald,sans-serif;
+    font-weight: 600;
+}
+.list_product .cover_text {
+    width: 200px;
+    height: 50px;
+    transition: .5s;
+}
+
+.list_product .cover_text:hover {
+    box-shadow: -1px 2px 10px -10px #000000;
+    transform: translateY(-20px);
+}
+.list_product .detail_product
+{
+    padding-left: 10px;
+}
+.list_product .detail_product .cover{
+    width: 200px;
+    height: 50px;
+    background-color: #000000;
+    position: relative;
+    opacity: 0.2;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+    transform: translateY(-54px);
+    
+}
+
+
+
+span {
+    color: #fff;
+    display: block;
+}
+.list_product .detail_product .description_product{
+    position: relative;
+    top: -100px;
+    width: 210px;
+    color: #fff;
+    font-weight: 900;
+    font-family: Oswald,sans-serif;
+    font-size: 14px;
+    box-shadow: #888888;
+    padding-left: 10px;
+    
+}
+
+.list_product .detail_product img{
+    height: 160px;
+    width: 200px;
+    margin-left: 0px;
+    margin-top: 20px; 
+}
+
+.list_product .detail_product .add:hover {
+    cursor: pointer;
+}
+
+.list_product .product{
+    display: flex;
+}
+
+.Payment{
+    position: absolute;
+    top: 200px;
+    border-radius: 10px;
+    left: 1000px;
+    width: 400px;
+    height: 430px;
+    box-shadow: -1px 2px 7px 0px #888888;
+}
+
+.Payment .title{
+    position: relative;
+    top: -100px;
+    left: -180px;
+    font-family: Oswald,sans-serif;
+    font-weight: 700;
+
+    font-size: 24px;
+}
+
+.hr_first {
+    width: 350px;
+    position: relative;
+    top: -80px;
+    left: 20px;
+    background-color: rgb(204, 204, 209); /* Đổi màu nền của đường kẻ ngang */
+    height: 1px; /* Đặrgb(75, 75, 85)iều cao cho đường kẻ ngang */
+    border: none;
+}
+
+.Payment .question{
+    position: relative;
+    left: 20px;
+    top: -70px;
+    font-weight: 700;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.enter{
+    height: 40px;
+    position: relative;
+    margin: 30px 0;
+    left: 20px; 
+    top: -70px;
+}
+
+
+
+.enter label{
+    position: absolute;
+    font-size: 14px;
+    left: 0px;
+    color: #888888;
+    pointer-events: none;
+    transition: 0.5s;
+    
+}
+
+
+.enter input:focus~label,
+.enter input:valid~label{
+    transform: translateY(-15px);
+    color: #200e88;
+    font-size: 10px;
+}
+
+.enter input:focus{
+    border-bottom: 2px solid #ff0000;
+    
+}
+.enter input{
+    width: 230px;
+    border: none;
+    outline: none;
+    background: transparent;
+    height: 40px;
+    border-bottom: 2px solid #ada9a9;
+}
+
+.enter button{
+    margin-left: 20px;
+    height: 40px;
+    width: 100px;
+    border-radius: 50px;
+    color: #fff;
+    background-color: #000000;
+    font-weight: 700;
+}
+
+.enter button:hover{
+    cursor: pointer;
+}
+
+.hr_second{
+    width: 350px;
+    position: relative;
+    top: -60px;
+    left: 20px;
+    background-color: rgb(204, 204, 209); /* Đổi màu nền của đường kẻ ngang */
+    height: 1px; /* Đặrgb(75, 75, 85)iều cao cho đường kẻ ngang */
+    border: none;
+}
+
+.Description_payment{
+    display: flex;
+    position: relative;
+    left: 20px;
+    top: -50px;
+}
+
+.Description_payment .Price_product{
+    position: relative;
+    left: 180px;
+}
+
+.Description_payment .total{
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+
+.hr_third{
+    width: 350px;
+    position: relative;
+    top: -30px;
+    left: 20px;
+    background-color: rgb(204, 204, 209); /* Đổi màu nền của đường kẻ ngang */
+    height: 1px; /* Đặrgb(75, 75, 85)iều cao cho đường kẻ ngang */
+    border: none;
+}
+
+
+.Check_out{
+    top: -0px;
+    position: relative;
+    width: 350px;
+    height: 40px;
+    left: 20px;
+    display: flex;
+    box-shadow: -1px 2px 7px 0px #888888;
+    border-radius: 20px;
+    background-color: #ff0000;
+}
+
+.Check_out .check{
+    position: relative;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    left: 20px;
+    top: 8px;
+}
+
+
+.Check_out .price_total{
+    position: relative;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    left: 190px;
+    top: 8px;
+}
+
+

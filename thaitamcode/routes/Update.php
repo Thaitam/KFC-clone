@@ -1,11 +1,13 @@
 <?php
     require("ketnoiDatabase.php");
     $masp = (int) $_GET['id'];
-    $sql = "SELECT * FROM `hotdeal` WHERE `id` = '$masp'";
+    $sql = "SELECT * FROM `food` WHERE `id` = '$masp'";
     $query = mysqli_query($cn, $sql);
     $row = mysqli_fetch_array($query);
-    $img = $row['image'];
+    $img = $row['imageURL'];
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,19 +57,15 @@
             </h1>
             <div class="form-product_name jc-spacebtw">
                 <label class="margin-bottom-10 font" for="name">Tên sản phẩm</label>
-                <input class="margin-bottom-15 font pding-lr-5px" type="text" id="name" name="name"  value="<?= $row["name_food"]?>">
-            </div>
-            <div class="form-product_pricedeal jc-spacebtw">
-                <label class="margin-bottom-10 font" for="price-deal">Giá giảm sản phẩm</label>
-                <input class="margin-bottom-15 font pding-lr-5px" type="number" id="price-deal" name="price-deal" value="<?= $row["pricedeal"]?>">
+                <input class="margin-bottom-15 font pding-lr-5px" type="text" id="name" name="name"  value="<?= $row["name"]?>">
             </div>
             <div class="form-product_priceorg jc-spacebtw">
-                <label class="margin-bottom-10 font" for="price-org">Giá góc sản phẩm</label>
-                <input class="margin-bottom-15 font pding-lr-5px" type="number" id="price-org" name="price-org" value="<?= $row["priceorg"] ?>">
+                <label class="margin-bottom-10 font" for="price-org">Giá sản phẩm</label>
+                <input class="margin-bottom-15 font pding-lr-5px" type="number" id="price-org" name="price-org" value="<?= $row["price"] ?>">
             </div>
             <div class="form-product_img jc-spacebtw">
                 <label class="margin-bottom-10 font" for="product-img">Hình ảnh sản phẩm</label>
-                <img src="../asset/image/hotdeal/<?= $row["image"]?>" alt="">
+                <img src="../asset/image/product/<?= $row["imageURL"]?>" alt="">
                 <input class="margin-bottom-15 font pding-lr-5px" type="file" id="product-img" name="product-img" value="Choose File">
             </div>
             <div class="form-product_desct jc-spacebtw">
@@ -88,15 +86,14 @@
         require("ketnoiDatabase.php");
         if (isset($_POST["submit"])) {
             $tensp = $_POST["name"];
-            $giaspdeal = $_POST["price-deal"];
             $giasp = $_POST["price-org"];
             $mota = $_POST["product-desct"];
             $hinhanh = $_FILES['product-img']['name'];
             //Tạo thư mục , tạo thư mục images ở bên ngoài
-            $taget_dir = "../asset/image/hotdeal/";
+            $taget_dir = "../asset/image/product/";
             if($hinhanh) {
-                if (file_exists("../asset/image/hotdeal/".$img)) {
-                    unlink("../asset/image/hotdeal/".$img);
+                if (file_exists("../asset/image/product/".$img)) {
+                    unlink("../asset/image/product/".$img);
                 } 
                 $target_file = $taget_dir.$hinhanh;
             } else {
@@ -104,9 +101,9 @@
                 $hinhanh = $img;
             }
             //Check đủ các thông tin
-            if(isset($tensp) && isset($giaspdeal) && isset($giasp) && isset($mota) && isset($hinhanh)) {
+            if(isset($tensp) && isset($giasp) && isset($mota) && isset($hinhanh)) {
                 move_uploaded_file($_FILES["product-img"]["tmp_name"], $target_file);
-                $sql = "UPDATE `hotdeal` SET `name_food`='$tensp', `pricedeal`='$giaspdeal', `priceorg`='$giasp', `description`='$mota', `image`='$hinhanh' WHERE `id`='$masp'";
+                $sql = "UPDATE `food` SET `name`='$tensp', `price`='$giasp', `description`='$mota', `imageURL`='$hinhanh' WHERE `id`='$masp'";
                 mysqli_query($cn, $sql);
                 echo "<script> alert('Bạn đã cập nhật thành công')
                     window.location.href = 'Productmanement.php';
