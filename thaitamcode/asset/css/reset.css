@@ -12,7 +12,7 @@ html {
 }
 /* width */
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 10px !important;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
   /* Track */

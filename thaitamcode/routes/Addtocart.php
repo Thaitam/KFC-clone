@@ -5,8 +5,7 @@
     $query = mysqli_query($cn, $img);
     $after = mysqli_fetch_assoc($query);
 
-    
     $sql = "INSERT INTO `cart` (`iditem`) VALUES ($masp)";
     mysqli_query($cn, $sql);
-    header("location: ./thucdon.php");
+    exit();
 ?>

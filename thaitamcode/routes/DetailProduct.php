@@ -1,11 +1,3 @@
-<?php
-    require("ketnoiDatabase.php");
-    $masp = (int) $_GET['id'];
-    $sql = "SELECT * FROM `hotdeal` WHERE `id` = '$masp'";
-    $query = mysqli_query($cn, $sql);
-    $row = mysqli_fetch_array($query);
-    $img = $row['image'];
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,33 +29,55 @@
                 <ul>
                     <li><a href="#">English</a></li>
                     <li><a href="./Manament.php"><i class="icon icon-user ti-user"></i></a></li>
-                    <li><a href="./Cart.php"><i class="icon icon-cart ti-shopping-cart"></i></a></li>
+                    <?php
+                        require("ketnoiDatabase.php");
+                        $sql = "SELECT COUNT(DISTINCT iditem) AS total_product FROM cart;";
+                        $result = mysqli_query($cn, $sql);
+                        $row = mysqli_fetch_assoc($result);
+                    ?>
+                    <li class="cartquantity"><a href="./Cart.php"><span id="totalProduct"><?= $row["total_product"] ?></span></a></li>
                     <li><a href="./Productmanement.php"><i class="icon icon-memu ti-menu"></i></a></li>
                 </ul>
             </div>
         </header>
     </section>
     <!-- Header -->
-    
+    <?php
+        require("ketnoiDatabase.php");
+        $masp = (int) $_GET['id'];
+        $sql = "SELECT * FROM `hotdeal` WHERE `id` = '$masp'";
+        $query = mysqli_query($cn, $sql);
+        $row = mysqli_fetch_array($query);
+        $img = $row['image'];
+    ?>
+
     <!-- Detail product -->
-    <section style="margin-bottom: 50px;">
-        <div class="product_detail">
-        </div>
+    <section class="container detail-product-container">
         <div class="detail_information">
-            <img src="../asset/image/hotdeal/<?= $row["image"]?>" alt="">
+            <img src="../asset/image/hotdeal/<?=$row['image']?>" alt="">
             <div class="Button_detail">
                 <div class="Cover">
                     <div class="Cover1"></div>
                     <div class="Cover2"></div>
                     <div class="Cover3"></div>
                 </div>
-                <div class="title"><?= $row["name_food"]?></div>
-                <p><?=$row["description"]?></p>
-                <button>Thêm</button>
+                <div class="title"><?=$row['name_food']?></div>
+                <p><?=$row['description']?></p>
+                <p><?=$row['pricedeal']?>.000<span>₫</span></p>
+                <p style="text-decoration: line-through;"><?=$row['priceorg']?>.000<span>₫</span></p>
+                <div class="btnsection">
+                        <button class="btn-add-indetail" data-product-id="<?= $row['id'] ?>">
+                            Thêm
+                        </button>
+                    </div>
             </div>
         </div>
+        <div id="hideDiv" class="hidediv">
+            Thêm vào giỏ hàng thành công! <a href="./Cart.php">Xem giỏ hàng</a>
+        </div> 
     </section>
     <!-- Detail product -->
+    
 
     <!-- Footer -->
     <div class="background-footer">
@@ -151,5 +165,42 @@
         </section>
     </div>
     <!-- Footer -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".btn-add-indetail").click(function() {
+                // Lấy ID sản phẩm từ thuộc tính data
+                var productId = $(this).data("product-id");
+
+                // Gửi yêu cầu AJAX đến tệp Addtocart.php
+                $.ajax({
+                    type: "GET",
+                    url: "./Addtocart.php",
+                    data: { id: productId },
+                    success: function(data) {
+                        // Xử lý dữ liệu nếu cần thiết
+                        // Ví dụ: hiển thị thông báo, cập nhật giỏ hàng, v.v.
+                        // Thêm class activeflex vào #hideDiv
+                        const thongbao = document.getElementById('hideDiv');
+                        thongbao.classList.add('activeflex');
+
+                        // Sau 5 giây, thêm class activenone và ẩn #hideDiv
+                        setTimeout(function() {
+                            thongbao.classList.remove('activeflex');
+                        }, 2000);
+                    },
+                    error: function(xhr, status, error) {
+                        // Xử lý lỗi nếu có
+                        console.log("Đã xảy ra lỗi khi thêm sản phẩm vào giỏ hàng.");
+                    }
+                });
+
+                // Ngăn chặn hành vi mặc định của nút
+                return false;
+            });
+        });
+    </script>
+    <script src="../asset/js/showquantity.js" ></script>
+    
 </body>
 </html>

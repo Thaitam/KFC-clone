@@ -1,3 +1,7 @@
+.detail-product-container {
+    margin-top: 110px;
+}
+
 .product_detail{
     margin-top: 200px;
     margin-left: 200px;
@@ -16,17 +20,17 @@
 }
 
 .detail_information{
-    margin-left: 300px;
     display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
 }
 .Button_detail{
+    position: relative;
     height: 250px;
-    width: 450px;
-    margin-left: 100px;
-    margin-top: 40px;
+    width: 430px;
     border-radius: 10px;
-    padding: 60px;
-    padding-top: 30px;
+    padding: 55px 35px;
     background-color: #fff;
     box-shadow: -1px 2px 7px 0px #888888;
 }
@@ -35,24 +39,23 @@
     font-family: Oswald,sans-serif;
     text-transform: uppercase;
     font-size: 32px;
-    line-height: 38px;
     font-weight: 600;
-    margin-top: -10px;
-    margin-left: -20px;
+}
+.chuthich {
+    opacity: .7;
 }
 
 .Button_detail p {
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     font-size: 15px;
-    color: #78838c;
-    margin-top: 15px;
-    margin-left: -20px;
+    margin-bottom: 8px;
 }
 
 .Button_detail button{
-    margin-left: -33px;
-    margin-top: 30px;
-    width: 400px;
+    position: absolute;
+    bottom: 8px;
+    left: 30px;
+    right: 30px;
     height: 40px;
     box-shadow: -1px 2px 7px 0px #888888;
     border: 0;
@@ -67,8 +70,8 @@
 
 .Button_detail .Cover{
     display: flex;
-    position: relative;
-    top: -30px;
+    position: absolute;
+    top: 0;
     width: 60px;
     height: 30px;
 }

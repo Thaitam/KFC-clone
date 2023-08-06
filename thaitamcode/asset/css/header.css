@@ -69,6 +69,23 @@ header#header {
     margin-top: 7px;
 }
 
+.cartquantity {
+    background: url(../image/Cart/cart1.png) no-repeat center / cover;
+    width: 35px;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.cartquantity > a {
+    padding: 7px;
+}
+
+#totalProduct {
+    padding: 8px;
+}
+
 /* Logo */
 .logo {
     width: 78px;

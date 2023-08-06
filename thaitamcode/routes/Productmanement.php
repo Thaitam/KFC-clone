@@ -13,6 +13,12 @@
         <link rel="stylesheet" href="../asset/css/form.css">
         <link rel="stylesheet" href="../asset/icon/themify-icons-font/themify-icons/themify-icons.css">
     </head>
+    <script>
+        function xoasanpham() {
+            var conf = confirm(`Bạn có chắc chắn xóa sản phẩm này không ?`);
+            return conf;
+        }
+    </script>
 <body>
     <!-- HEADER -->
     <section class="section-header">
@@ -28,8 +34,6 @@
                 <ul>
                     <li><a href="#">English</a></li>
                     <li><a href="./Manament.php"><i class="icon icon-user ti-user"></i></a></li>
-                    <li><a href="./Cart.php"><i class="icon icon-cart ti-shopping-cart"></i></a></li>
-                    <li><a href="#"><i class="icon icon-memu ti-menu"></i></a></li>
                 </ul>
             </div>
         </header>
@@ -56,13 +60,13 @@
                         <div class="product_item_content">
                             <h1><?= $row["name_food"] ?></h1>
                             <p class="item_content_desct"><?= $row["description"] ?></p>
-                            <p class="item_content_pricedeal"> <?= $row["pricedeal"] ?><span>₫</span></p>
-                            <p class="item_content_priceorg"><?= $row["priceorg"] ?><span>₫</span></p>
+                            <p class="item_content_pricedeal"> <?= $row["pricedeal"] ?>.000<span>₫</span></p>
+                            <p class="item_content_priceorg"><?= $row["priceorg"] ?>.000<span>₫</span></p>
                         </div>
                     </div>
                     <div class="button-manament">
                         <button class="btn-update"><a href="./Updatehotdeal.php?id=<?= $row['id']?>">Sửa</a></button>
-                        <button class="btn-delete"><a href="./Deleteproduct.php?id=<?= $row['id']?>">Xóa</a></button>
+                        <button class="btn-delete"><a onclick="return xoasanpham()" href="./Deleteproduct.php?id=<?= $row['id']?>">Xóa</a></button>
                     </div>
                 </li>
             <?php
@@ -85,13 +89,13 @@
                         <div class="product_item_content">
                             <h1><?= $row["name"] ?></h1>
                             <p class="item_content_desct"><?= $row["description"] ?></p>
-                            <p class="item_content_price"><?= $row["price"] ?><span>₫</span></p>
+                            <p class="item_content_price"><?= $row["price"] ?>.000<span>₫</span></p>
                             <p class="item_content_tyeof"><?= $row["typeof"] ?></p>
                         </div>
                     </div>
                     <div class="button-manament">
                         <button class="btn-update"><a href="./Update.php?id=<?= $row['id']?>">Sửa</a></button>
-                        <button class="btn-delete"><a href="./Update.php?id=<?= $row['id']?>">Xóa</a></button>
+                        <button class="btn-delete"><a onclick="return xoasanpham()" href="./Delete.php?id=<?= $row['id']?>">Xóa</a></button>
                     </div>
                 </li>
             <?php

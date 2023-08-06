@@ -9,6 +9,39 @@
 
 .container-list_product {
     margin-top: 77px;
+    position: relative;
+}
+#hideDiv {
+    position: fixed;
+    bottom: 30px;
+    right: 22px;
+    background: #000;
+    width: 350px;
+    height: 54px;
+    margin: 0 auto;
+    color: #fff;
+    padding: 22px;
+    text-align: center;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 40px;
+    font-size: 14px;
+    z-index: 9999;
+}
+#hideDiv > a {
+    color: #e4002b;
+    text-decoration: underline;
+}
+.activeblock {
+    display: block !important;
+}
+
+.activeflex {
+    display: flex !important;
+}
+.activenone {
+    display: none !important;
 }
 
 #hotdeal {
@@ -152,6 +185,11 @@ p.price_org {
 .container-manament {
     margin-top: 107px;
 }
+.container-manament > h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
 
 .list-product {
     width: 100%;
@@ -204,4 +242,5 @@ p.price_org {
     margin: 5px;
     font-family: 'Oswald', sans-serif;
 }
+
 

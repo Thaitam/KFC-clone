@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KFC</title>
     <link rel="stylesheet" href="./asset/css/header.css">
+    <link rel="stylesheet" href="./asset/css/menu.css">
     <link rel="stylesheet" href="./asset/css/logo.css">
     <link rel="stylesheet" href="./asset/css/reset.css">
     <link rel="stylesheet" href="./asset/css/slider.css">
@@ -30,7 +31,13 @@
                 <ul>
                     <li><a href="#">English</a></li>
                     <li><a href="./routes/Manament.php"><i class="icon icon-user ti-user"></i></a></li>
-                    <li><a href="#"><i class="icon icon-cart ti-shopping-cart"></i></a></li>
+                <?php
+                    require("./routes/ketnoiDatabase.php");
+                    $sql = "SELECT COUNT(DISTINCT iditem) AS total_product FROM cart;";
+                    $result = mysqli_query($cn, $sql);
+                    $row = mysqli_fetch_assoc($result);
+                ?>    
+                    <li class="cartquantity"><a href="./routes/Cart.php"><?= $row["total_product"] ?></a></li>
                     <li><a href="./routes/Productmanement.php"><i class="icon icon-memu ti-menu"></i></a></li>
                 </ul>
             </div>
@@ -65,66 +72,80 @@
         <div class="content-container">
             <div class="content_item">
                 <div class="outter-img">
-                    <img src="./asset/image/content/index/KHUYEN MAI.jpg" alt="Khuyến mãi" class="item_img">
+                    <a href="http://localhost/project_final/thaitamcode/routes/thucdon.php#hotdeal"><img src="./asset/image/content/index/KHUYEN MAI.jpg" alt="Khuyến mãi" class="item_img"></a>
                 </div>
                 <div class="item_subline">
-                    Ưu đãi <i class="ti-angle-right"></i>
+                    <a href="http://localhost/project_final/thaitamcode/routes/thucdon.php#hotdeal">Ưu đãi</a><i class="ti-angle-right"></i>
                 </div>
             </div>
             <div class="content_item">
                 <div class="outter-img">
-                    <img src="./asset/image/content/index/MON MOI.jpg" alt="Khuyến mãi" class="item_img">
+                    <a href="http://localhost/project_final/thaitamcode/routes/thucdon.php#new-product">
+                        <img src="./asset/image/content/index/MON MOI.jpg" alt="Khuyến mãi" class="item_img">
+                    </a>
                 </div>
                 <div class="item_subline">
-                    Món mới <i class="ti-angle-right"></i>
+                    <a href="http://localhost/project_final/thaitamcode/routes/thucdon.php#new-product">Món mới</a><i class="ti-angle-right"></i>
                 </div>
             </div>
             <div class="content_item">
                 <div class="outter-img">
-                    <img src="./asset/image/content/index/COMBO 1 NGUOI.jpg" alt="Khuyến mãi" class="item_img">
+                    <a href="http://localhost/project_final/thaitamcode/routes/thucdon.php#for-one">
+                        <img src="./asset/image/content/index/COMBO 1 NGUOI.jpg" alt="Khuyến mãi" class="item_img">
+                    </a>
                 </div>
                 <div class="item_subline">
-                    Combo 1 Người <i class="ti-angle-right"></i>
+                    <a href="http://localhost/project_final/thaitamcode/routes/thucdon.php#for-one">Combo 1 Người</a><i class="ti-angle-right"></i>
                 </div>
             </div>
             <div class="content_item">
                 <div class="outter-img">
-                    <img src="./asset/image/content/index/COMBO NHOM.jpg" alt="Khuyến mãi" class="item_img">
+                    <a href="http://localhost/project_final/thaitamcode/routes/thucdon.php#sharing">
+                        <img src="./asset/image/content/index/COMBO NHOM.jpg" alt="Khuyến mãi" class="item_img">
+                    </a>
                 </div>
                 <div class="item_subline">
-                    Combo Nhóm <i class="ti-angle-right"></i>
+                    <a href="http://localhost/project_final/thaitamcode/routes/thucdon.php#sharing">Combo Nhóm</a><i class="ti-angle-right"></i>
                 </div>
             </div>
             <div class="content_item">
                 <div class="outter-img">
-                    <img src="./asset/image/content/index/GA.jpg" alt="Khuyến mãi" class="item_img">
+                    <a href="http://localhost/project_final/thaitamcode/routes/thucdon.php#fried-rosted-chicken">
+                        <img src="./asset/image/content/index/GA.jpg" alt="Khuyến mãi" class="item_img">
+                    </a>
                 </div>
                 <div class="item_subline">
-                    Gà rán - Gà Quay <i class="ti-angle-right"></i>
+                    <a href="http://localhost/project_final/thaitamcode/routes/thucdon.php#fried-rosted-chicken">Gà rán - Gà Quay</a><i class="ti-angle-right"></i>
                 </div>
             </div>
             <div class="content_item">
                 <div class="outter-img">
-                    <img src="./asset/image/content/index/COM.jpg" alt="Khuyến mãi" class="item_img">
+                    <a href="http://localhost/project_final/thaitamcode/routes/thucdon.php#burger---rice">
+                        <img src="./asset/image/content/index/COM.jpg" alt="Khuyến mãi" class="item_img">
+                    </a>
                 </div>
                 <div class="item_subline">
-                    Burger - Cơm - Mì ý <i class="ti-angle-right"></i>
+                    <a href="http://localhost/project_final/thaitamcode/routes/thucdon.php#burger---rice">Burger - Cơm - Mì ý</a><i class="ti-angle-right"></i>
                 </div>
             </div>
             <div class="content_item">
                 <div class="outter-img">
-                    <img src="./asset/image/content/index/MON AN NHE.jpg" alt="Khuyến mãi" class="item_img">
+                    <a href="http://localhost/project_final/thaitamcode/routes/thucdon.php#snack">
+                        <img src="./asset/image/content/index/MON AN NHE.jpg" alt="Khuyến mãi" class="item_img">
+                    </a>
                 </div>
                 <div class="item_subline">
-                    Thức ăn nhẹ <i class="ti-angle-right"></i>
+                    <a href="http://localhost/project_final/thaitamcode/routes/thucdon.php#snack">Thức ăn nhẹ</a><i class="ti-angle-right"></i>
                 </div>
             </div>
             <div class="content_item">
                 <div class="outter-img">
-                    <img src="./asset/image/content/index/TRANG MIENG.jpg" alt="Khuyến mãi" class="item_img">
+                    <a href="http://localhost/project_final/thaitamcode/routes/thucdon.php#dessert-&-drink">
+                        <img src="./asset/image/content/index/TRANG MIENG.jpg" alt="Khuyến mãi" class="item_img">
+                    </a>
                 </div>
                 <div class="item_subline">
-                    Thức uống & Tráng miệng <i class="ti-angle-right"></i>
+                    <a href="http://localhost/project_final/thaitamcode/routes/thucdon.php#dessert-&-drink">Thức uống & Tráng miệng</a><i class="ti-angle-right"></i>
                 </div>
             </div>
         </div>
@@ -135,64 +156,42 @@
                 </span>
             </h2>
             <div class="container_content_item">
+            <?php
+                require("./routes/ketnoiDatabase.php");
+                $sql = "SELECT * FROM `food` WHERE typeof LIKE '%sharing%'";
+                $query = mysqli_query($cn, $sql);
+            ?>
+            <?php
+                while ($row = mysqli_fetch_array($query)) {
+            ?>
                 <div class="content_item content_item_rcm">
                     <div class="outter-img outter-img_rcm">
-                        <img src="./asset/image/content/index/D6.jpg" alt="Khuyến mãi" class="item_img">
+                        <a href="./routes/Detail.php?id=<?= $row['id']?>">
+                            <img src="./asset/image/product/<?= $row["imageURL"] ?>" alt="Khuyến mãi" class="item_img">
+                        </a>
                     </div>
                     <div class="item_subline item_subline_rcm no-shadow">
                         <p class="item_subline-title">
-                            Combo Nhóm 1
+                        <?= $row["name"] ?>
                         </p>
                         <p class="item_subline-price">
-                            172.000<span>₫</span>
+                        <?= $row["price"] ?>.000<span>₫</span>
                         </p>
                     </div>
                     <div class="item_subline content_item_dsct no-shadow">
                         <p class="dsct">
-                            3 Miếng Gà + 1 Burger Zinger/Burger Tôm/Burger Phi-lê Gà Quay + 2 Lon Pepsi
+                            <?= $row["description"] ?>
                         </p>
-                        <button class="btn_add-item">Thêm</button>
+                        <button class="btn_add-item" data-product-id="<?= $row['id'] ?>">Thêm</button>
                     </div>
                 </div>
-                <div class="content_item content_item_rcm">
-                    <div class="outter-img outter-img_rcm">
-                        <img src="./asset/image/content/index/D7-new.jpg" alt="Khuyến mãi" class="item_img">
-                    </div>
-                    <div class="item_subline item_subline_rcm no-shadow">
-                        <p class="item_subline-title">
-                            Combo Nhóm 1
-                        </p>
-                        <p class="item_subline-price">
-                            172.000<span>₫</span>
-                        </p>
-                    </div>
-                    <div class="item_subline content_item_dsct no-shadow">
-                        <p class="dsct">
-                            3 Miếng Gà + 1 Burger Zinger/Burger Tôm/Burger Phi-lê Gà Quay + 2 Lon Pepsi
-                        </p>
-                        <button class="btn_add-item">Thêm</button>
-                    </div>
-                </div>
-                <div class="content_item content_item_rcm">
-                    <div class="outter-img outter-img_rcm">
-                        <img src="./asset/image/content/index/D8-new.jpg" alt="Khuyến mãi" class="item_img">
-                    </div>
-                    <div class="item_subline item_subline_rcm no-shadow">
-                        <p class="item_subline-title">
-                            Combo Nhóm 1
-                        </p>
-                        <p class="item_subline-price">
-                            172.000<span>₫</span>
-                        </p>
-                    </div>
-                    <div class="item_subline content_item_dsct no-shadow">
-                        <p class="dsct">
-                            3 Miếng Gà + 1 Burger Zinger/Burger Tôm/Burger Phi-lê Gà Quay + 2 Lon Pepsi
-                        </p>
-                        <button class="btn_add-item">Thêm</button>
-                    </div>
-                </div>
+            <?php
+                }
+            ?>
             </div>
+        </div>
+        <div id="hideDiv" class="hidediv">
+            Thêm vào giỏ hàng thành công! <a href="./Cart.php">Xem giỏ hàng</a>
         </div>
     </section>
     <!-- CONTENT -->
@@ -286,5 +285,41 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./dist/owl.carousel.min.js"></script>
     <script src="./asset/js/slider.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(".btn-add").click(function() {
+                // Lấy ID sản phẩm từ thuộc tính data
+                var productId = $(this).data("product-id");
+
+                // Gửi yêu cầu AJAX đến tệp Addtocart.php
+                $.ajax({
+                    type: "GET",
+                    url: "./Addtocart.php",
+                    data: { id: productId },
+                    success: function(data) {
+                        // Xử lý dữ liệu nếu cần thiết
+                        // Ví dụ: hiển thị thông báo, cập nhật giỏ hàng, v.v.
+                        // Thêm class activeflex vào #hideDiv
+                        const thongbao = document.getElementById('hideDiv');
+                        thongbao.classList.add('activeflex');
+
+                        // Sau 5 giây, thêm class activenone và ẩn #hideDiv
+                        setTimeout(function() {
+                            thongbao.classList.remove('activeflex');
+                        }, 1500);
+                    },
+                    error: function(xhr, status, error) {
+                        // Xử lý lỗi nếu có
+                        console.log("Đã xảy ra lỗi khi thêm sản phẩm vào giỏ hàng.");
+                    }
+                });
+
+                // Ngăn chặn hành vi mặc định của nút
+                return false;
+            });
+        });
+    </script>
 </body>
 </html>

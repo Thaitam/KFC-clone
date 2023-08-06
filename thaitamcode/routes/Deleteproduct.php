@@ -11,5 +11,6 @@
     }
     $sql = "DELETE FROM `hotdeal` WHERE `hotdeal`.`id` = $masp";
     mysqli_query($cn, $sql);
+    echo "<script>confirm('Xác nhận xóa');</script>";
     header("location: ./Productmanement.php");
 ?>

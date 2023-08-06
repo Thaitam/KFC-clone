@@ -1,12 +1,6 @@
-<?php
-    require("ketnoiDatabase.php");
-    $id = "SELECT iditem FROM `cart`";
-    $sql = "SELECT * FROM `food` WHERE `id` = '$id'";
-    $query = mysqli_query($cn, $sql);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +11,7 @@
     <link rel="stylesheet" href="../asset/css/content.css">
     <link rel="stylesheet" href="../asset/css/menu.css">
     <link rel="stylesheet" href="../asset/css/footer.css">
-    <link rel="stylesheet" href="../asset/css/Cart.css">
+    <link rel="stylesheet" href="../asset/css/cart1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../asset/icon/themify-icons-font/themify-icons/themify-icons.css">
 </head>
@@ -37,139 +31,292 @@
                 <ul>
                     <li><a href="#">English</a></li>
                     <li><a href="./Manament.php"><i class="icon icon-user ti-user"></i></a></li>
-                    <li><a href="#"><i class="icon icon-cart ti-shopping-cart"></i></a></li>
                     <li><a href="./Productmanement.php"><i class="icon icon-memu ti-menu"></i></a></li>
-                </ul>   
+                </ul>
             </div>
         </header>
     </section>
     <!-- Header -->
+    <!-- Cart -->
+    <section class="container cart-container">
+        <h1 class="cart-heading">
+            Giỏ hàng của tôi
+        </h1>
+        <a class="deleteall" href="./btndeleteall.php">Xóa tất cả</a>
+        <!-- Cart is empty -->
+        <div class="cart-is-empty">
+            <div class="cart-empty-heading">
+                <h1>GIỎ HÀNG CỦA BẠN ĐANG TRỐNG. HÃY ĐẶT MÓN NGAY!</h1>
+                <button class="cart-empty-btn">
+                    <a href="./thucdon.php">Bắt đầu đặt hàng</a>
+                </button>
+            </div>
+        </div>
+        <!-- Cart is empty -->
+        <!-- Cart is fill -->
+        <div class="cart">
+            <div class="cart-fill-container">
+            <?php
+                // Thực hiện kết nối đến cơ sở dữ liệu
+                require("ketnoiDatabase.php");
 
-    <!-- MY BUCKET -->
-    <section style="margin-bottom: 20px;">
-        <div class="title">MY BUCKET</div>
-    <?php
-        while ($row = mysqli_fetch_array($query)) {
-    ?>
-        <div class="Button_detail">
-            <img src="../asset/image/procduct/<?= $row["image"]?>" alt="">
-            <div class="Infomation_Product">
-                <div class="Name_product">Happy Meal</div>
-                <div class="description">View Details <i class="fa-solid fa-chevron-down"></i></div>
-                <div class="button">
-                    <div class="edit">Edit</div>
-                    <div class="remove">Remove</div>
+                // Truy vấn để lấy các giá trị từ bảng cart
+                $id_item = "SELECT iditem FROM cart";
+                $result = mysqli_query($cn, $id_item);
+
+                // Kiểm tra và lấy các số nguyên từ kết quả truy vấn
+                $id_array = array();
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $id_array[] = $row['iditem'];
+                    }
+                }
+
+                // Kiểm tra nếu có các số nguyên trong $id_array, thực hiện truy vấn $sql
+                if (!empty($id_array)) {
+                    // Chuyển mảng $id_array thành chuỗi để sử dụng trong truy vấn $sql
+                    $id_list = implode(",", $id_array);
+
+                    // Truy vấn $sql để lấy dữ liệu từ bảng food
+                    $sql = "SELECT * FROM food WHERE id IN ($id_list)";
+                    $query = mysqli_query($cn, $sql);
+
+                    // Xử lý dữ liệu lấy được từ bảng food
+                    while ($row = mysqli_fetch_array($query)) {
+                        // Hiển thị thông tin món ăn
+                        ?>
+                        <div class="item-in-cart product">
+                            <div class="item-cart-img">
+                                <img src="../asset/image/product/<?= $row["imageURL"] ?>" alt="">
+                            </div>
+                            <div class="item-cart-content">
+                                <h2 class="cart-content_title">
+                                    <?= $row["name"] ?>
+                                </h2>
+                                <p class="cart-content_desct">
+                                    <?= $row["description"] ?>
+                                </p>
+                                <button class="delete-btn">
+                                    <a class="delete-btn-a" data-product-id="<?= $row['id'] ?>">Xóa</a>
+                                </button>
+                            </div>
+                            <div class="item-cart-price">
+                                <p><?= $row["price"] ?>.000<span>₫</span></p>
+                                <p class="xoagia"></p>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    // Nếu không có dữ liệu, thêm class .activeblock vào cart-is-empty
+                    echo "<script>
+                        const empty = document.querySelector('.cart-is-empty');
+                        const cartfill = document.querySelector('.cart');
+                        const btndeleteall = document.querySelector('.deleteall');
+                            btndeleteall.classList.add('activenone');
+                            empty.classList.add('activeblock');
+                            cartfill.classList.add('activenone');
+                        </script>";
+                }
+
+                // Đóng kết nối đến cơ sở dữ liệu
+                mysqli_close($cn);
+            ?>
+            <?php
+                // Thực hiện kết nối đến cơ sở dữ liệu
+                require("ketnoiDatabase.php");
+
+                // Truy vấn để lấy các giá trị từ bảng cart
+                $id_item = "SELECT iditem FROM cart";
+                $result = mysqli_query($cn, $id_item);
+
+                // Kiểm tra và lấy các số nguyên từ kết quả truy vấn
+                $id_array = array();
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $id_array[] = $row['iditem'];
+                    }
+                }
+
+                // Kiểm tra nếu có các số nguyên trong $id_array, thực hiện truy vấn $sql
+                if (!empty($id_array)) {
+                    // Chuyển mảng $id_array thành chuỗi để sử dụng trong truy vấn $sql
+                    $id_list = implode(",", $id_array);
+
+                    // Truy vấn $sql để lấy dữ liệu từ bảng food
+                    $sql = "SELECT * FROM hotdeal WHERE id IN ($id_list)";
+                    $query = mysqli_query($cn, $sql);
+
+                    // Xử lý dữ liệu lấy được từ bảng food
+                    while ($row = mysqli_fetch_array($query)) {
+                        // Hiển thị thông tin món ăn
+                        ?>
+                        <div class="item-in-cart product">
+                            <div class="item-cart-img">
+                                <img src="../asset/image/hotdeal/<?= $row["image"] ?>" alt="">
+                            </div>
+                            <div class="item-cart-content">
+                                <h2 class="cart-content_title">
+                                    <?= $row["name_food"] ?>
+                                </h2>
+                                <p class="cart-content_desct">
+                                    <?= $row["description"] ?>
+                                </p>
+                                <button class="delete-btn">
+                                    <a class="delete-btn-a" data-product-id="<?= $row['id'] ?>">Xóa</a>
+                                </button>
+                            </div>
+                            <div class="item-cart-price">
+                                <p><?= $row["pricedeal"] ?>.000<span>₫</span></p>
+                                <p class="xoagia"><?= $row["priceorg"] ?>.000<span>₫</span></p>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    // Nếu không có dữ liệu, thêm class .activeblock vào cart-is-empty
+                    echo "<script>
+                        const empty = document.querySelector('.cart-is-empty');
+                        const cartfill = document.querySelector('.cart');
+                        const btndeleteall = document.querySelector('.deleteall');
+                            btndeleteall.classList.add('activenone');
+                            empty.classList.add('activeblock');
+                            cartfill.classList.add('activenone');
+                        </script>";
+                }
+
+                // Đóng kết nối đến cơ sở dữ liệu
+                mysqli_close($cn);
+            ?>
+                <div class="list-product-gw">
+                    <h3 class="product-gw_heading">
+                        SẼ NGON HƠN KHI THƯỞNG THỨC CÙNG…
+                    </h3>
+                    <ul class="product-ul">
+                        <li class="product-li">
+                            <div class="cover-text">
+                                3 VIÊN KHOAI MÔN KIM SA <br> 22.000₫
+                            </div>
+                        </li>
+                        <li class="product-li">
+                            <div class="cover-text">
+                                1 Viên Khoai Môn Kim Sa<br> 22.000₫
+                            </div>
+                        </li>
+                        <li class="product-li">
+                            <div class="cover-text">
+                                KHOAI TÂY CHIÊN (VỪA)<br> 19.000₫
+                            </div>
+                        </li>
+                        <li class="product-li">
+                            <div class="cover-text">
+                                KHOAI TÂY CHIÊN (LỚN)<br> 28.000₫
+                            </div>
+                        </li>
+                        <li class="product-li">
+                            <div class="cover-text">
+                                1 BÁNH TRỨNG<br> 18.000₫
+                            </div>
+                        </li>
+                        <li class="product-li">
+                            <div class="cover-text">
+                                TRÀ ĐÀO<br> 24.000₫
+                            </div>
+                        </li>
+                        <li class="product-li">
+                            <div class="cover-text">
+                                4 BÁNH TRỨNG<br> 58.000₫
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        
-            <div class="order">
-                <img class="minus" src="../asset/image/Cart/minus.png" alt="" onclick="handlesMinus()">
-                <input type="text" value="1" name="amount" id="amount">
-                <img class="plus" src="../asset/image/Cart/add.png" alt="" onclick="handlesPlus()">
-                <div class="price">
-                    <input type="text" value="87,000₫" name="price_product" id="price_product">
+            <div class="modal-sticky">
+                <div class="Payment">
+                <?php
+                    require("ketnoiDatabase.php");
+                    $sql = "SELECT COUNT(DISTINCT iditem) AS total_product FROM cart;";
+                    $result = mysqli_query($cn, $sql);
+                    $row = mysqli_fetch_assoc($result);
+                ?>
+                    <div class="title">
+                        <?= $row["total_product"] ?> Món
+                    </div>
+                    <hr class="hr_first">
+                    <div class="question">Bạn có Mã giảm giá?</div>
+                    <div class="enter">
+                        <input class="input_box" type="text" required>
+                        <label >Mã giảm giá*</label>
+                        <button>Áp dụng</button>
+                    </div>
+                    <hr class="hr_first">
+                    <div class="Description_payment">
+                    <?php
+                        require("ketnoiDatabase.php");
+
+                        $sql = "SELECT cart.id, cart.iditem, food.price AS food_price, hotdeal.pricedeal AS hotdeal_price
+                                FROM cart
+                                LEFT JOIN food ON cart.iditem = food.id
+                                LEFT JOIN hotdeal ON cart.iditem = hotdeal.id";
+
+                        $result = mysqli_query($cn, $sql);
+
+                        // Khởi tạo biến tổng
+                        $total_price = 0;
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $food_price = $row['food_price'];
+                            $hotdeal_price = $row['hotdeal_price'];
+
+                            // Tính tổng của hai cột food_price và hotdeal_price
+                            $total_price += $food_price + $hotdeal_price;
+                        }
+                    ?>
+                        <div class="total-order">
+                            <div>Tổng đơn hàng</div>
+                            <div><?= $total_price ?>.000<span>₫</span></div>
+                        </div>
+                        <div class="total-order">
+                            <div>Phí giao hàng</div>
+                            <div>10.000<span>₫</span></div>
+                        </div>
+                        <?php
+                            require("ketnoiDatabase.php");
+
+                            $sql = "SELECT cart.id, cart.iditem, food.price AS food_price, hotdeal.pricedeal AS hotdeal_price
+                                    FROM cart
+                                    LEFT JOIN food ON cart.iditem = food.id
+                                    LEFT JOIN hotdeal ON cart.iditem = hotdeal.id";
+
+                            $result = mysqli_query($cn, $sql);
+
+                            // Khởi tạo biến tổng
+                            $total_price_at = 0;
+
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $food_price = $row['food_price'];
+                                $hotdeal_price = $row['hotdeal_price'];
+
+                                // Tính tổng của hai cột food_price và hotdeal_price
+                                $total_price_at += $food_price + $hotdeal_price + 10;
+                            }
+                        ?>
+                        <div class="total-order">
+                            <div>Tổng thanh toán</div>
+                            <div><?= $total_price_at?>.000<span>₫</span></div>
+                        </div>
+                    </div>
+                    <hr class="hr_first">
+                    <div class="Check_out">
+                        <div class="check">Thanh toán</div>
+                        <div class="price_total"><?= $total_price_at?>.000₫</div>
+                    </div>
                 </div>
             </div>
         </div>
-    <?php
-        }
-    ?>
-        <div class="list_product">
-            <div class="main_sentence">THIS GOES GREAT WITH...</div>
-            <div class="product">
-                <div class="detail_product">
-                    <img class="image_datail" src="../asset/image/Cart/egg-taro.jpg" alt="">
-                    <div class="cover_text">
-                        <div class="cover"></div>
-                        <div class="description_product">1 GOLDEN LAVA TARO + 1 EGGTART <span>22,000₫</span></div>
-                    </div>
-                    
-                    <img class="add" src="../asset/image/Cart/addRed.png" alt="" style="height: 30px;
-                    width: 30px;
-                    position: relative;
-                    top: -222px; 
-                    left: 160px;
-                    border-radius: 50%;
-                    box-shadow: -1px 2px 10px 0px #000000;">
-                </div>
-                <div class="detail_product">
-                    <img class="image_datail" src="../asset/image/Cart/egg-taro.jpg" alt="">
-                    <div class="cover_text">
-                        <div class="cover"></div>
-                        <div class="description_product">1 GOLDEN LAVA TARO + 1 EGGTART <span>22,000₫</span></div>
-                    </div>
-                    
-                    <img class="add" src="../asset/image/Cart/addRed.png" alt="" style="height: 30px;
-                    width: 30px;
-                    position: relative;
-                    top: -222px; 
-                    left: 160px;
-                    border-radius: 50%;
-                    box-shadow: -1px 2px 10px 0px #000000;">
-                </div>
-                <div class="detail_product">
-                    <img class="image_datail" src="../asset/image/Cart/FF-L.jpg" alt="">
-                    <div class="cover_text">
-                        <div class="cover"></div>
-                        <div class="description_product">FRENCH FRIES (R) <span>19,000₫</span></div>
-                    </div>
-                    <img class="add" src="../asset/image/Cart/addRed.png" alt="" style="height: 30px;
-                    width: 30px;
-                    position: relative;
-                    top: -222px; 
-                    left: 160px;
-                    border-radius: 50%;
-                    box-shadow: -1px 2px 10px 0px #000000;">
-                </div>
-                <div class="detail_product">
-                    <img class="image_datail" src="../asset/image/Cart/FF-R.jpg" alt="">
-                    <div class="cover_text">
-                        <div class="cover"></div>
-                        <div class="description_product">FRENCH FRIES (L) <span>28,000₫</span></div>
-                    </div>
-                    <img class="add" src="../asset/image/Cart/addRed.png" alt="" style="height: 30px;
-                    width: 30px;
-                    position: relative;
-                    top: -222px; 
-                    left: 160px;
-                    border-radius: 50%;
-                    box-shadow: -1px 2px 10px 0px #000000;">
-                </div>
-            </div>
-        </div>
-        <div class="Payment">
-            <div class="title">
-                1 ITEM
-            </div>
-            <hr class="hr_first">
-            <div class="question">Have an Online Coupon?</div>
-            <div class="enter">
-                <input class="input_box" type="text" required>
-                <label >Online Coupon*</label>
-                <button>Redeem</button>
-            </div>
-            <hr class="hr_second">
-            <div class="Description_payment">
-                <div class="Name_product">
-                    <div >Subtotal</div>
-                    <div>Delivery Charge</div>
-                    <div class="total">Total</div>
-                </div>
-                <div class="Price_product">
-                    <input value="87,000₫" name="Subtotal" id="Subtotal" ></input>
-                    <p>10,000₫</p>
-                    <input value="97,000₫" name="total" id="total" ></input>
-                </div>
-            </div>
-            <hr class="hr_third">
-            <div class="Check_out">
-                <div class="check">Checkout</div>
-                <div class="price_total">97,000₫</div>
-            </div>
-            
-        </div>
+        <!-- Cart is fill -->
     </section>
-    <!-- MY BUCKET -->
+    <!-- Cart -->
     <!-- Footer -->
     <div class="background-footer">
         <section class="container container-footer">
@@ -255,45 +402,39 @@
             </footer>
         </section>
     </div>
-      <!-- Footer -->
-      <script>
-        let amountElement = document.getElementById('amount')
-        let priceElement = document.getElementById('price_product')
-        let subtotalElement = document.getElementById('Subtotal')
-        let subtotal = subtotalElement.value
-        let totalElement = document.getElementById('total')
-        let total = totalElement.value
-        let price_product = priceElement.value 
-        let amount = amountElement.value 
-        let render = (amount, price) => {
-            amountElement.value = amount
-            priceElement.value = price + ',000₫'
-            subtotalElement.value = price + ',000₫'
-            totalElement.value = price + 10 + ',000₫'
-            
-        }
-        
-        
-        
-        let handlesPlus = () =>
-        {
-            amount++;
-            price_product = 87 * amount
-            render(amount, price_product)
-        }
-        let handlesMinus = () =>
-        {
-            if (amount > 1)
-            {
-                amount--;
-                price_product -= 87 ;
-            }
-            render(amount, price_product)
-        }
+    <!-- Footer -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-      
-      </script>
-      <!-- Footer -->
+<script>
+    $(document).ready(function() {
+        // Bắt sự kiện click nút "Xóa"
+        $(".delete-btn-a").on('click', function() {
+            var productId = $(this).data('product-id');
+            var clickedButton = $(this);
+            // Gửi yêu cầu AJAX để xóa sản phẩm
+            $.ajax({
+                type: 'GET',
+                url: './btndeletehd.php',
+                data: { id: productId },
+                success: function() {
+                    // Xóa thành công, ẩn sản phẩm khỏi giao diện
+                    clickedButton.closest('.product').addClass('activenone');
+                    // Kiểm tra xem còn sản phẩm hiển thị hay không
+                    var remainingProducts = $('.product:not(.activenone)');
+                    if (remainingProducts.length === 0) {
+                        // Không còn sản phẩm nào hiển thị, thực hiện load lại trang
+                        location.reload();
+                    }
+                    setTimeout(function() {
+                        location.reload();
+                    }, 50);
+                },
+                error: function() {
+                    alert('Đã xảy ra lỗi khi xóa sản phẩm.');
+                }
+            });
+        });
+    });
+</script>
 </body>
-
 </html>

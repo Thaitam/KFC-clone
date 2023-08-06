@@ -27,7 +27,13 @@
                 <ul>
                     <li><a href="#">English</a></li>
                     <li><a href="./Manament.php"><i class="icon icon-user ti-user"></i></a></li>
-                    <li><a href="./Cart.php"><i class="icon icon-cart ti-shopping-cart"></i></a></li>
+                <?php
+                    require("ketnoiDatabase.php");
+                    $sql = "SELECT COUNT(DISTINCT iditem) AS total_product FROM cart;";
+                    $result = mysqli_query($cn, $sql);
+                    $row = mysqli_fetch_assoc($result);
+                ?>
+                    <li class="cartquantity"><a href="./Cart.php"><span id="totalProduct"><?= $row["total_product"] ?></span></a></li>
                     <li><a href="./Productmanement.php"><i class="icon icon-memu ti-menu"></i></a></li>
                 </ul>
             </div>
@@ -52,6 +58,9 @@
         </div>
     </nav>
     <section class="container container-list_product">
+        <div id="hideDiv" class="hidediv">
+            Thêm vào giỏ hàng thành công! <a href="./Cart.php">Xem giỏ hàng</a>
+        </div>  
         <section id="hotdeal" class="magin-top sectionscroll">
             <div class="heading">
                 <h3>Ưu đãi</h3>
@@ -75,10 +84,10 @@
                         </p>
                         <div class="product-content_price">
                             <p class="price_deal">
-                            <?= $row["pricedeal"] ?><span>₫</span>
+                            <?= $row["pricedeal"] ?>.000<span>₫</span>
                             </p>
                             <p class="price_org">
-                            <?= $row["priceorg"] ?><span>₫</span>
+                            <?= $row["priceorg"] ?>.000<span>₫</span>
                             </p>
                         </div>
                     </div>
@@ -86,12 +95,11 @@
                         <p><?= $row["description"] ?></p>
                     </div>
                     <div class="btnsection">
-                        <button class="btn-edit">
-                            Tùy chỉnh
-                        </button>
-                        <button class="btn-add">
+                        <div class="btnsection">
+                        <button class="btn-add onlyone" data-product-id="<?= $row['id'] ?>">
                             Thêm
                         </button>
+                    </div>
                     </div>
                 </div>
             <?php
@@ -123,7 +131,7 @@
                         </p>
                         <div class="product-content_price">
                             <p class="price_deal">
-                                <?= $row["price"] ?><span>₫</span>
+                                <?= $row["price"] ?>.000<span>₫</span>
                             </p>
                         </div>
                     </div>
@@ -131,8 +139,8 @@
                         <p><?= $row["description"] ?></p>
                     </div>
                     <div class="btnsection">
-                        <button class="btn-add onlyone">
-                            <a href="./Addtocart.php?id=<?= $row['id']?>">Thêm</a>
+                        <button class="btn-add onlyone" data-product-id="<?= $row['id'] ?>">
+                            Thêm
                         </button>
                     </div>
                 </div>
@@ -167,7 +175,7 @@
                         </p>
                         <div class="product-content_price">
                             <p class="price_deal">
-                                <?= $row["price"] ?><span>₫</span>
+                                <?= $row["price"] ?>.000<span>₫</span>
                             </p>
                         </div>
                     </div>
@@ -175,7 +183,7 @@
                         <p><?= $row["description"] ?></p>
                     </div>
                     <div class="btnsection">
-                        <button class="btn-add onlyone">
+                        <button class="btn-add onlyone" data-product-id="<?= $row['id'] ?>">
                             Thêm
                         </button>
                     </div>
@@ -211,7 +219,7 @@
                         </p>
                         <div class="product-content_price">
                             <p class="price_deal">
-                                <?= $row["price"] ?><span>₫</span>
+                                <?= $row["price"] ?>.000<span>₫</span>
                             </p>
                         </div>
                     </div>
@@ -219,7 +227,7 @@
                         <p><?= $row["description"] ?></p>
                     </div>
                     <div class="btnsection">
-                        <button class="btn-add onlyone">
+                        <button class="btn-add onlyone" data-product-id="<?= $row['id'] ?>">
                             Thêm
                         </button>
                     </div>
@@ -255,7 +263,7 @@
                         </p>
                         <div class="product-content_price">
                             <p class="price_deal">
-                                <?= $row["price"] ?><span>₫</span>
+                                <?= $row["price"] ?>.000<span>₫</span>
                             </p>
                         </div>
                     </div>
@@ -263,7 +271,7 @@
                         <p><?= $row["description"] ?></p>
                     </div>
                     <div class="btnsection">
-                        <button class="btn-add onlyone">
+                        <button class="btn-add onlyone" data-product-id="<?= $row['id'] ?>">
                             Thêm
                         </button>
                     </div>
@@ -299,7 +307,7 @@
                         </p>
                         <div class="product-content_price">
                             <p class="price_deal">
-                                <?= $row["price"] ?><span>₫</span>
+                                <?= $row["price"] ?>.000<span>₫</span>
                             </p>
                         </div>
                     </div>
@@ -307,7 +315,7 @@
                         <p><?= $row["description"] ?></p>
                     </div>
                     <div class="btnsection">
-                        <button class="btn-add onlyone">
+                        <button class="btn-add onlyone" data-product-id="<?= $row['id'] ?>">
                             Thêm
                         </button>
                     </div>
@@ -342,7 +350,7 @@
                         </p>
                         <div class="product-content_price">
                             <p class="price_deal">
-                                <?= $row["price"] ?><span>₫</span>
+                                <?= $row["price"] ?>.000<span>₫</span>
                             </p>
                         </div>
                     </div>
@@ -350,7 +358,7 @@
                         <p><?= $row["description"] ?></p>
                     </div>
                     <div class="btnsection">
-                        <button class="btn-add onlyone">
+                        <button class="btn-add onlyone" data-product-id="<?= $row['id'] ?>">
                             Thêm
                         </button>
                     </div>
@@ -385,7 +393,7 @@
                         </p>
                         <div class="product-content_price">
                             <p class="price_deal">
-                                <?= $row["price"] ?><span>₫</span>
+                                <?= $row["price"] ?>.000<span>₫</span>
                             </p>
                         </div>
                     </div>
@@ -393,7 +401,7 @@
                         <p><?= $row["description"] ?></p>
                     </div>
                     <div class="btnsection">
-                        <button class="btn-add onlyone">
+                        <button class="btn-add onlyone" data-product-id="<?= $row['id'] ?>">
                             Thêm
                         </button>
                     </div>
@@ -495,5 +503,48 @@
     <script src="../asset/js/fixheaderfixed.js"></script>
     <!-- mychange -->
     <script src="../asset/js/scollandactive.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(".btn-add").click(function() {
+                // Lấy ID sản phẩm từ thuộc tính data
+                var productId = $(this).data("product-id");
+
+                // Gửi yêu cầu AJAX đến tệp Addtocart.php
+                $.ajax({
+                    type: "GET",
+                    url: "./Addtocart.php",
+                    data: { id: productId },
+                    success: function(data) {
+                        // Xử lý dữ liệu nếu cần thiết
+                        // Ví dụ: hiển thị thông báo, cập nhật giỏ hàng, v.v.
+                        // Thêm class activeflex vào #hideDiv
+                        const thongbao = document.getElementById('hideDiv');
+                        thongbao.classList.add('activeflex');
+
+                        // Sau 5 giây, thêm class activenone và ẩn #hideDiv
+                        setTimeout(function() {
+                            location.reload();
+
+                            // Sau khi xóa thông báo, tải lại trang sau 2 giây nữa
+                            setTimeout(function() {
+                                thongbao.classList.remove('activeflex');
+                            }, 2000);
+                        }, 1500);
+                    },
+                    error: function(xhr, status, error) {
+                        // Xử lý lỗi nếu có
+                        console.log("Đã xảy ra lỗi khi thêm sản phẩm vào giỏ hàng.");
+                    }
+                });
+
+                // Ngăn chặn hành vi mặc định của nút
+                return false;
+            });
+        });
+    </script>
+    <script src="../asset/js/showquantity.js" ></script>
+
 </body>
 </html>

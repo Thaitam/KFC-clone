@@ -3,6 +3,7 @@ const btnRight = document.querySelector(".btn-next");
 const tabMenu = document.querySelector(".tab-menu");
 const tabBtns = document.querySelectorAll(".btn-a");
 
+
 const iconVisibility = () => {
     let scrollLeftValue = Math.ceil(tabMenu.scrollLeft);
     let scrollableWidth = tabMenu.scrollWidth - tabMenu.clientWidth;
@@ -61,3 +62,4 @@ window.onresize = function() {
     let scrollLeftValue = Math.round(tabMenu.scrollLeft);
     btnLeft.style.display = scrollLeftValue > 0 ? "block" : "none";
 };
+
